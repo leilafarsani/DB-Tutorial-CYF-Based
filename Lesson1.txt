@@ -44,3 +44,13 @@ In the past few weeks, you stored and retrieved data using files. This is fine f
 A database defines a structure for your data and the relationships between entities
 A database provides convenient and performant ways to safely store and retrieve data
 A database provides a mechanism to check the validity of your data
+
+Different types of database
+There are many different kinds of database and different implementations. 
+Sometimes, a database type is a better fit to certain use case or certain problems.
+The most well-known database types include relational database, key/value database,
+graph database and document database (also known as NoSQL). For this class, we will
+focus specifically on relational database as they are the most widely used and supported. 
+You can consult DB-Engines to see a ranking of the most used database,
+as you can see, there is a lot of them!
+
