@@ -39,7 +39,18 @@ retrieve and organize information.
 
 Why do we need them?​
 
-In the past few weeks, you stored and retrieved data using files. This is fine for simple data but it can quickly become an issue as your application becomes more complex and needs to store and manipulate more complicated data. For example, imagine you want to develop the next biggest hotel booking application. You will need to store the list of hotels available for booking somewhere, and as you add more features, you will need to save users information, the reviews they post for each hotel, but also the bookings each user makes. You can see that the data you need to handle can become very complicated, especially when you need to consider that data are not static, as they can be updated or deleted. To work more effectively with data, we can then use a database, which present the following benefits:
+In the past few weeks, you stored and retrieved data using files.
+This is fine for simple data but it can quickly become an issue
+as your application becomes more complex and needs to store and
+manipulate more complicated data. For example, imagine you want
+to develop the next biggest hotel booking application. You will
+need to store the list of hotels available for booking somewhere,
+and as you add more features, you will need to save users information, 
+the reviews they post for each hotel, but also the bookings each user makes. 
+You can see that the data you need to handle can become very complicated,
+especially when you need to consider that data are not static, as they
+can be updated or deleted. To work more effectively with data, we can
+then use a database, which present the following benefits:
 
 A database defines a structure for your data and the relationships between entities
 A database provides convenient and performant ways to safely store and retrieve data
@@ -53,4 +64,11 @@ graph database and document database (also known as NoSQL). For this class, we w
 focus specifically on relational database as they are the most widely used and supported. 
 You can consult DB-Engines to see a ranking of the most used database,
 as you can see, there is a lot of them!
+
+Introduction to PostgreSQL
+"PostgreSQL is a powerful, open source object-relational database system that uses and
+extends the SQL language combined with many features that safely store and scale the most
+complicated data workloads. The origins of PostgreSQL date back to 1986 as part of the
+POSTGRES project at the University of California at Berkeley and has more than 30 years
+of active development on the core platform." (source: postgresql.org)
 
