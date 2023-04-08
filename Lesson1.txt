@@ -128,3 +128,94 @@ createdb cyf_hotels
 
 Then connect to your database with:
 psql cyf_hotels
+
+Creating a table
+Data are stored in tables. Let's first create a customers table 
+to hold the details of customers.
+
+CREATE TABLE customers (
+  id        SERIAL PRIMARY KEY,
+  name      VARCHAR(30) NOT NULL,
+  email     VARCHAR(120) NOT NULL,
+  address   VARCHAR(120),
+  city      VARCHAR(30),
+  postcode  VARCHAR(12),
+  country   VARCHAR(20)
+);
+
+The above SQL query creates a new table named "customers" with the following columns:
+
+id: a serial primary key column that automatically generates a unique ID number for each row.
+name: a required column for the customer's name, with a maximum length of 30 characters.
+email: a required column for the customer's email address, with a maximum length of 120 characters.
+address: an optional column for the customer's street address, with a maximum length of 120 characters.
+city: an optional column for the customer's city of residence, with a maximum length of 30 characters.
+postcode: an optional column for the customer's postal code, with a maximum length of 12 characters.
+country: an optional column for the customer's country of residence, with a maximum length of 20 characters.
+
+The SERIAL data type is used for the id column, which automatically generates a unique ID number for each new 
+row inserted into the table. The PRIMARY KEY constraint is applied to the id column, which ensures 
+that each ID is unique and cannot be null. The NOT NULL constraint is applied to the name and email columns,
+which means that these columns must have a value in every row.
+
+More explanation for the SQL statement above:
+
+SERIAL PRIMARY KEY defines the column id as a unique identifier for each row.
+Moreover, this identifier will automatically incremented every time data is inserted. 
+id is called the primary key of the table customers.
+VARCHAR(20) defines the column to hold text data with a maximum length of 20 characters
+NOT NULL defines the column as not nullable, which means that you must set a value.
+Other useful types include INT, TEXT, BOOLEAN and DATE.
+The database will reject any values which don't match the type.
+
+EXERCISE
+-Create the customers table in the cyf_hotels database.
+CREATE TABLE customers (
+  id        SERIAL PRIMARY KEY,
+  name      VARCHAR(30) NOT NULL,
+  email     VARCHAR(120) NOT NULL,
+  address   VARCHAR(120),
+  city      VARCHAR(30),
+  postcode  VARCHAR(12),
+  country   VARCHAR(20)
+);
+-Verify that the table customers is created with the psql command
+\dt which lists the existing tables.
+
+-Display the table customers definition with the command \d customers
+and verify that it matches what you expect.
+
+-Create a new table hotels in the cyf_hotels database with the following
+columns: an id, a name, the number of rooms and the hotel postcode.
+
+CREATE TABLE hotels (
+  id SERIAL PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  room_count INTEGER NOT NULL,
+  postcode VARCHAR(12) NOT NULL
+);
+
+
+Use the commands above to verify that the table is correctly created.
+
+Now that we have a table to store customers and a table to store hotels, 
+we can create a table to hold the bookings of customers for an hotel with 
+the checkin date and the number of nights they intend to stay:
+
+CREATE TABLE bookings (
+  id               SERIAL PRIMARY KEY,
+  customer_id      INT REFERENCES customers(id),
+  hotel_id         INT REFERENCES hotels(id),
+  checkin_date     DATE NOT NULL,
+  nights           INT NOT NULL
+);
+
+In the above, customer_id and hotel_id are called foreign keys as they 
+reference an id from a different table. This set a very strong constraint 
+as you will not be able to create a booking for a customer id which does 
+not exist in the customers table!
+
+
+EXERCISE
+Create the table bookings in your cyf_hotels database 
+and verify that it is correctly created. (DONE ABOVE)
