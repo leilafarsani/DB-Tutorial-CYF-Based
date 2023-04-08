@@ -168,7 +168,7 @@ NOT NULL defines the column as not nullable, which means that you must set a val
 Other useful types include INT, TEXT, BOOLEAN and DATE.
 The database will reject any values which don't match the type.
 
-EXERCISE
+EXERCISE 1
 -Create the customers table in the cyf_hotels database.
 CREATE TABLE customers (
   id        SERIAL PRIMARY KEY,
@@ -215,7 +215,52 @@ reference an id from a different table. This set a very strong constraint
 as you will not be able to create a booking for a customer id which does 
 not exist in the customers table!
 
-
-EXERCISE
+EXERCISE 2
 Create the table bookings in your cyf_hotels database 
 and verify that it is correctly created. (DONE ABOVE)
+
+Inserting data
+Once your customers, hotels and bookings table are created, 
+you can insert data with the following SQL statements:
+
+INSERT INTO customers (name, email, address, city, postcode, country) VALUES ('John Smith','j.smith@johnsmith.org','11 New Road','Liverpool','L10 2AB','UK');
+INSERT INTO hotels (name, rooms, postcode) VALUES ('Triple Point Hotel', 10, 'CM194JS');
+INSERT INTO bookings (customer_id, hotel_id, checkin_date, nights) VALUES (1, 1, '2019-10-01', 2);
+
+EXERCISE
+Run the 3 SQL statements above.
+Insert yourself in the customers table.
+Insert the following 3 hotels in the hotels table:
+The Triple Point Hotel has 10 rooms, its postcode is CM194JS
+The Royal Cosmos Hotel has 5 rooms, its postcode is TR209AX
+The Pacific Petal Motel has 15 rooms, its postcode is BN180TG
+
+Try to insert a booking for a customer id which does not exist
+in the customers table (for example ID 100). What is happening and why?
+
+-- Insert data for Triple Point Hotel
+INSERT INTO hotels (name, room_count, postcode)
+VALUES ('Triple Point Hotel', 10, 'CM194JS');
+
+-- Insert data for Royal Cosmos Hotel
+INSERT INTO hotels (name, room_count, postcode)
+VALUES ('Royal Cosmos Hotel', 5, 'TR209AX');
+
+-- Insert data for Pacific Petal Motel
+INSERT INTO hotels (name, room_count, postcode)
+VALUES ('Pacific Petal Motel', 15, 'BN180TG');
+
+If you try to insert a booking for a customer ID that does not exist 
+in the "customers" table (for example, ID 100), you will get a foreign 
+key constraint violation error. This is because the "bookings" table has 
+a foreign key constraint on the "customer_id" column that references the "id"
+column in the "customers" table.
+
+When you try to insert a new booking with a customer ID that does not
+exist in the "customers" table, the foreign key constraint will fail
+because it cannot find a matching customer ID in the referenced table.
+This will result in an error message indicating that the foreign key 
+constraint has been violated.
+
+The exact error message will depend on the database system you are using,
+but it will typically be something like:
