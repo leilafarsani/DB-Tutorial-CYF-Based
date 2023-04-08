@@ -84,3 +84,15 @@ Stands for Relational Database Management System
 It is a program that processes SQL statements to manage a relational database
 PostgreSQL is a RDBMS.
 
+What characterizes a relational database?
+As mentioned previously, a relational database is a specific type of 
+database. Data is stored in tables of rows and columns as per the example below:
+(img1)
+How about storing everything in one big table as shown below? Why isn't it a good idea?
+
+A customer could have several bookings. If the customer changes their telephone number,
+you would have to update every single rows for this customer with their new number, 
+which is more prone to errors. As a general rule, try to avoid duplication of data,
+and instead design your system in a way that you have a single source of truth for
+each piece of data. The example below is NOT a good solution.
+(img2)
