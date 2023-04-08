@@ -72,3 +72,15 @@ complicated data workloads. The origins of PostgreSQL date back to 1986 as part 
 POSTGRES project at the University of California at Berkeley and has more than 30 years
 of active development on the core platform." (source: postgresql.org)
 
+What is SQL?
+Pronounced S-Q-L or sequel
+Stands for Structured Query Language
+SQL is the standard language used to communicate with relational database
+SQL statements are used to query, create, update, delete records in a database
+SQL statements are executed by a RDBMS.
+
+What is a RDBMS?
+Stands for Relational Database Management System
+It is a program that processes SQL statements to manage a relational database
+PostgreSQL is a RDBMS.
+
