@@ -264,3 +264,23 @@ constraint has been violated.
 
 The exact error message will depend on the database system you are using,
 but it will typically be something like:
+
+ERROR:  insert or update on table "bookings" violates foreign key constraint "bookings_customer_id_fkey"
+DETAIL:  Key (customer_id)=(100) is not present in table "customers".
+
+To fix this error, you need to ensure that the customer ID you are inserting
+into the "bookings" table already exists in the "customers" table.
+
+Retrieving data
+Previously, you have inserted data in your tables. How do you make sure
+these data have been inserted correctly? The following SQL statement
+is used to request data from a specific table:
+
+SELECT * FROM customers;
+
+Exercise 4
+EXERCISE
+Use the above SQL statement to display all the data inserted in the customers table.
+Use the above SQL statement to display all the data inserted in the hotels table.
+Use the above SQL statement to display all the data inserted in the bookings table.
+
