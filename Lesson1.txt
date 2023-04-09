@@ -284,3 +284,67 @@ Use the above SQL statement to display all the data inserted in the customers ta
 Use the above SQL statement to display all the data inserted in the hotels table.
 Use the above SQL statement to display all the data inserted in the bookings table.
 
+Retrieving data with conditions
+Actually, the SELECT statement is very powerful and you will see you can request
+a lot of different things with it. Have you seen the * character in the SQL
+statement above? It means that you want to see the data for all the columns 
+of the table. What if you want to only return specific columns? For example, 
+to retrieve all customers name and address from the table customers:
+
+SELECT name,address FROM customers;
+
+Sometimes, you want to retrieve only data which verify a specific condition. 
+In this case, you can use a WHERE clause. For example, to retrieve all hotels
+
+having more than 7 rooms:
+SELECT * FROM hotels WHERE rooms > 7;
+
+To retrieve the customer name and address with id 1:
+SELECT name,address FROM customers WHERE id = 1;
+
+To retrieve all the bookings starting after 2019/10/01:
+SELECT * FROM bookings WHERE checkin_date > '2019/10/01';
+
+To retrieve all the bookings starting after 2019/10/01 for a minimum of 2 nights:
+SELECT * FROM bookings WHERE checkin_date > '2019/10/01' AND nights >= 2;
+
+To retrieve all the hotels with the postcode CM194JS or TR209AX:
+SELECT * FROM hotels WHERE postcode = 'CM194JS' OR postcode = 'TR209AX';
+
+EXERCISE
+Execute the file cyf_hotels_exercise5.sql which will reset your existing
+tables and insert more data in the customers, hotels and bookings tables.
+(hint: in the terminal, use psql -d cyf_hotels -f cyf_hotels_exercise5.sql).
+
+Retrieve all information for the customer Laurence Lebihan.
+SELECT *  FROM customers WHERE name =  'Laurence Lebihan';
+
+Retrieve all customers name living in UK.
+SELECT * FROM customers 
+
+Retrieve the address, city and postcode of Melinda Marsh.
+SELECT address, city, postcode FROM customers WHERE name ='Melinda Marsh';
+
+Retrieve all hotels located in the postcode DGQ127.
+SELECT * FROM hotels WHERE postcode = 'DGQ127';
+
+Retrieve all hotels with more than 11 rooms.
+SELECT * FROM hotels WHERE rooms>11;
+
+Retrieve all hotels with more than 6 rooms but less than 15 rooms.
+ SELECT * FROM hotels WHERE rooms BETWEEN 7 AND 14;
+
+Retrieve all hotels with exactly 10 rooms or 20 rooms.
+SELECT * FROM hotels WHERE rooms = 10 OR rooms = 20; (or)
+
+Retrieve all bookings for customer id 1.
+SELECT * FROM hotels WHERE rooms IN(10,20);
+
+Retrieve all bookings for more than 4 nights.
+SELECT *  FROM bookings JOIN customers  ON bookings.customer_id = customers.id WHERE nights>4;
+
+Retrieve all bookings starting in 2020.
+SELECT * FROM bookings WHERE EXTRACT(YEAR FROM checkin_date) = 2020;
+
+Retrieve all bookings before 2020 for less than 4 nights.
+SELECT * FROM bookings WHERE EXTRACT(YEAR FROM checkin_date) < 2020 AND nights < 4;
