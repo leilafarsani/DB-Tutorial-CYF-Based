@@ -21,3 +21,26 @@ Update rows in a pre-existing table using PostgreSQL using UPDATE
 Combine tables together using PostgreSQL using INNER JOIN
 Connect a PostgreSQL database to a NodeJS application
 Retrieve data from a PostgreSQL database in a NodeJS application
+
+
+More SQL​
+
+For the following, use the file cyf_hotels_exercise5.sql from the previous
+class to reinitialise your database with psql -d cyf_hotels -f cyf_hotels_exercise5.sql.
+
+Changing the definition of a table​
+
+Sometimes, you may need to change the definition of a table you created before
+without deleting it. Such changes include renaming a table, adding/removing
+a column, changing the name of a column, changing the type of a column etc...
+The general syntax to perform these operations is:
+ALTER TABLE table_name action;
+
+For example, to add a new column to the existing customers table:
+ALTER TABLE customers ADD COLUMN date_of_birth DATE;
+
+To delete an existing column from the customers table:
+ALTER TABLE customers DROP COLUMN date_of_birth;
+
+To rename the table customers into clients:
+ALTER TABLE customers RENAME TO clients;
