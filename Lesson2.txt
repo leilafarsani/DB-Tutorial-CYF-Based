@@ -1,0 +1,23 @@
+Database 2- More SQL and integration with NodeJS
+
+
+More SQL
+Changing the definition of a table
+Dropping a table
+Updating a row
+Deleting a row
+Join tables
+Other useful operations
+Integration with NodeJS
+Introduction to node-postgres
+Loading data from a database with a GET endpoint
+
+
+Learning Objectives​
+
+Add and remove columns in a pre-existing table using PostgreSQL using ALTER
+Rename tables and columns in a pre-existing table using PostgreSQL using DELETE
+Update rows in a pre-existing table using PostgreSQL using UPDATE
+Combine tables together using PostgreSQL using INNER JOIN
+Connect a PostgreSQL database to a NodeJS application
+Retrieve data from a PostgreSQL database in a NodeJS application
