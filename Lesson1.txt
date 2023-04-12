@@ -2,16 +2,18 @@ Database 1 - Introduction to SQL
 
 What will we learn today?​
 
-Introduction to databases
+- Introduction to databases
 Why do we need them?
 Different types of database
-Introduction to PostgreSQL
+
+- Introduction to PostgreSQL
 What is SQL?
 What is a RDBMS?
 What characterises a relational database?
 Database modeling exercise
 Check your PostgreSQL installation
-Communicating with the database using SQL
+
+- Communicating with the database using SQL
 Creating a new database
 Creating a table
 Inserting data
@@ -348,3 +350,13 @@ SELECT * FROM bookings WHERE EXTRACT(YEAR FROM checkin_date) = 2020;
 
 Retrieve all bookings before 2020 for less than 4 nights.
 SELECT * FROM bookings WHERE EXTRACT(YEAR FROM checkin_date) < 2020 AND nights < 4;
+
+//CHANGES TO THE SYLLABUS
+
+Communicating with the database using SQL
+Retrieving data from an existing database
+Use basic single table query commands in SQL
+Choose which values are returned by a query
+Use literals, expressions and functions in queries
+Restricting the rows returned by a query to match some condition
+Sorting and limiting the number of rows returned
