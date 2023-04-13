@@ -403,3 +403,37 @@ You should see a listing of your tables as follows (with your own username as ow
     (5 rows)
 
     Here is the table diagram of the hotel database: (img3)
+
+The SELECT Statement​
+
+We are first going to look at retrieving data from the database 
+so we can examine it and later, use it in our applications.
+
+To get data out of a table you use the SELECT statement (or command):
+SELECT ... FROM ...;
+
+For example:
+SELECT name, phone, country FROM customers;
+
+SQL commands entered in the psql command line tool are terminated
+with a semicolon (;). The SQL command can extend across several lines, 
+but each keyword, name or value cannot be split over more than one line. For example:
+
+SELECT name,
+       phone,
+       country
+  FROM
+       customers;
+
+is the same as the previous example.
+
+You can use SELECT * FROM ... to return all the columns of the table. For example:
+SELECT * FROM rooms;
+
+This is also a useful command to see what columns exist in a table. You can also use 
+the \d <table_name> psql command to describe the table.
+
+Note that the use of UPPER/lower case is only to emphasise and differentiate 
+the SQL keywords (upper case) from the other names (lower case) e.g. column 
+and table names. SQL keywords are not case-sensitive.
+
