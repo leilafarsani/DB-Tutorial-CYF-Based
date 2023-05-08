@@ -90,7 +90,8 @@ PostgreSQL is a RDBMS.
 
 What characterizes a relational database?
 As mentioned previously, a relational database is a specific type of 
-database. Data is stored in tables of rows and columns as per the example below:
+database. Data is stored in tables (relations) of rows (tuples) and columns (attributes) 
+as per the example below:
 (img1)
 How about storing everything in one big table as shown below? Why isn't it a good idea?
 
