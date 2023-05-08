@@ -14,11 +14,13 @@ Database modeling exercise
 Check your PostgreSQL installation
 
 - Communicating with the database using SQL
-Creating a new database
-Creating a table
-Inserting data
-Retrieving data
-Retrieving data with conditions
+Retrieving data from an existing database
+Use basic single table query commands in SQL
+Choose which values are returned by a query
+Use literals, expressions and functions in queries
+Restricting the rows returned by a query to match some condition
+Sorting and limiting the number of rows returned
+
 
 Learning Objectives​
 
@@ -26,11 +28,12 @@ By the end of this lesson trainees should be able to
 
 Explain why databases are needed in Web Development
 Define what SQL is and what it is used for
-Describe what table, rows and columns are used for in a relational database
+Describe what tables, rows and columns are used for in a relational database
 Install and create a database using PostgreSQL
 Create a table in a database using PostgreSQL
-Insert data into a table using PostgreSQL
+Insert new data into existing tables
 Retrieve data from a table using PostgreSQL
+Use expressions to manipulate the results of queries
 Retrieve data from a table using conditionals in PostgreSQL
 List the different kinds of data that can be held in a PostgreSQL database
 
@@ -41,18 +44,17 @@ retrieve and organize information.
 
 Why do we need them?​
 
-In the past few weeks, you stored and retrieved data using files.
-This is fine for simple data but it can quickly become an issue
-as your application becomes more complex and needs to store and
-manipulate more complicated data. For example, imagine you want
-to develop the next biggest hotel booking application. You will
-need to store the list of hotels available for booking somewhere,
-and as you add more features, you will need to save users information, 
-the reviews they post for each hotel, but also the bookings each user makes. 
-You can see that the data you need to handle can become very complicated,
-especially when you need to consider that data are not static, as they
-can be updated or deleted. To work more effectively with data, we can
-then use a database, which present the following benefits:
+Why do we need them?
+In the past few weeks, you stored and retrieved data using files. 
+This is fine for simple data but it can quickly become an issue as your application
+becomes more complex and needs to store and manipulate more complicated data.
+For example, imagine you are asked to develop a booking system for a medium-sized 
+hotel. You will need to store the list of rooms available for booking, and as you 
+add more features, you will need to save users information, the reviews they post,
+the bookings each user makes and payment information. You can see that the data 
+you need to handle can become very complicated, especially when you need to consider 
+that data are not static, as they can be updated or deleted. To work more effectively
+ with data, we can then use a database, which presents the following benefits:
 
 A database defines a structure for your data and the relationships between entities
 A database provides convenient and performant ways to safely store and retrieve data
