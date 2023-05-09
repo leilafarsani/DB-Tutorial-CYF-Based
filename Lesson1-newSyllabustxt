@@ -118,3 +118,15 @@ This is also a useful command to see what columns exist in a table. You can also
 
 Note that the use of UPPER/lower case is only to emphasise and differentiate the SQL keywords (upper case) from the other names (lower case) e.g. column and table names. SQL keywords are not case-sensitive.
 
+Scrolling the Results
+When you issue a SELECT that returns a lot of data psql displays it one screenful at a time. To get the next screenful just press the Space key. You can also use the Up and Down arrow keys for line-by-line control and you can go back one screen with the 'B' key.
+
+When you have finished reading the output use the 'Q' key to quit the display manager.
+
+    Space       Next screenful
+    'B'         Previous screenful
+    Down Arrow  Next line
+    Up Arrow    Previous line
+    'Q'         Quit back to prompt
+
+
