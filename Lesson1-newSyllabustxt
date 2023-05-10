@@ -130,3 +130,13 @@ When you have finished reading the output use the 'Q' key to quit the display ma
     'Q'         Quit back to prompt
 
 
+Exercise 1
+List the name, phone and email of all customers
+SELECT name, phone, email FROM customers;
+
+List all the details of rooms
+SELECT * FROM rooms;
+
+
+List the customer id, checkin date and number of guests from reservations
+SELECT customer_id, checkin_date, num_guests FROM reservations;
