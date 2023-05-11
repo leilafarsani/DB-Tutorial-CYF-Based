@@ -205,4 +205,21 @@ SELECT room_no,
 
 Here, the query uses the alias as the column heading. Aliases can also be used in other contexts - more on this later...
 
+Note:
+The command above doesn't add a column to the table. It just applies to the query result.
+In PostgreSQL, a column alias is a way to rename a column in a result set of a query using the AS keyword.
+
+SELECT first_name AS "First Name", last_name AS "Last Name", email AS "Email"
+FROM customers;
+
+In this example, we are selecting the "first_name", "last_name", and "email" columns from the "customers" table. However, we are also using the AS keyword to provide aliases for these columns.
+
+The result set of this query will have three columns with the aliases "First Name", "Last Name", and "Email", respectively.
+
+Column aliases can be useful in situations where the original column name is long, ambiguous, or difficult to read, or when you want to combine columns or perform calculations in a way that requires a new column name.
+
+It's important to note that column aliases only apply to the result set of the query and do not change the underlying column name in the table.
+
+
+
 
