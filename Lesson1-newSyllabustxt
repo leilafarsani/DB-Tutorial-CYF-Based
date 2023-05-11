@@ -179,3 +179,30 @@ Read the psql command help and find out what \dS does then try it
  public | reservations_id_seq | sequence | student
  The command \dS in psql is used to display information about all sequences in the current database.
 
+
+Displaying More Than Just Columns
+You can use expressions in SQL:
+
+SELECT room_no, rate * 0.85 FROM rooms;
++---------+-------------+
+| room_no | rate * 0.85 |
++---------+-------------+
+|     101 |     72.2500 |
+|     102 |     72.2500 |
+|     103 |     72.2500 |
+  ...
+
+Use a column alias to give the expression a meaningful name:
+SELECT room_no,
+       rate * 0.85 AS discounted_rate
+    FROM rooms;
++---------+-----------------+
+| room_no | discounted_rate |
++---------+-----------------+
+|     101 |         72.2500 |
+|     102 |         72.2500 |
+|     103 |         72.2500 |
+
+Here, the query uses the alias as the column heading. Aliases can also be used in other contexts - more on this later...
+
+
