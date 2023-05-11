@@ -160,3 +160,22 @@ Exit (quit) from psql:
 \q
 
 Note that psql commands ARE case sensitive, unlike SQL commands.
+
+Exercise 2
+Display the definition of the customers table
+\d customers
+
+
+Display the help for the SELECT command (Note: we will not be covering ALL of this syntax!)
+\h SELECT
+
+Read the psql command help and find out what \dS does then try it
+
+                 List of relations
+ Schema |        Name         |   Type   |  Owner  
+--------+---------------------+----------+---------
+ public | customers_id_seq    | sequence | student
+ public | invoices_id_seq     | sequence | student
+ public | reservations_id_seq | sequence | student
+ The command \dS in psql is used to display information about all sequences in the current database.
+
