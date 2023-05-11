@@ -207,6 +207,7 @@ Here, the query uses the alias as the column heading. Aliases can also be used i
 
 Note:
 The command above doesn't add a column to the table. It just applies to the query result.
+
 In PostgreSQL, a column alias is a way to rename a column in a result set of a query using the AS keyword.
 
 SELECT first_name AS "First Name", last_name AS "Last Name", email AS "Email"
@@ -220,6 +221,33 @@ Column aliases can be useful in situations where the original column name is lon
 
 It's important to note that column aliases only apply to the result set of the query and do not change the underlying column name in the table.
 
+Expressions in SQL
+As with Javascript you can use a variety of 'operators' to define expressions in SQL.
 
+Arithmetic:
+
+*   Multiply
+
+/   Divide
+
++   Add
+
+-   Subtract
+
+%   Modulo (remainder)
+
+(...) Parentheses (to override precedence)
+
+String:
+||  Concatenation
+
+For example, to display the weekly rate for a room (with 10% weekly discount):
+SELECT room_no, room_type, rate * 7 * 0.90 from rooms;
+
+You can change the column heading using a column alias:
+SELECT room_no, room_type, rate * 7 * 0.90 as weekly_rate from rooms;
+
+Use string concatenation to glue character data together:
+SELECT 'Customer name = ' || name FROM customers;
 
 
