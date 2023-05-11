@@ -140,3 +140,23 @@ SELECT * FROM rooms;
 
 List the customer id, checkin date and number of guests from reservations
 SELECT customer_id, checkin_date, num_guests FROM reservations;
+
+Some Useful psql Commands
+The psql commands are not SQL and are specific to PostgreSQL (although most other RDBMS's have commands to perform similar jobs). These commands let you display information, execute system commands, etc. Use \? to display a summary of all the psql commands.
+
+Display a list of available tables in the database:
+\dt
+
+Display the definition of a table:
+\d <table name>
+
+Display help for SQL commands:
+\h [command]
+
+Display a summary of the psql (backslash) commands:
+\?
+
+Exit (quit) from psql:
+\q
+
+Note that psql commands ARE case sensitive, unlike SQL commands.
