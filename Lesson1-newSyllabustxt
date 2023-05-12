@@ -361,4 +361,34 @@ lower(name) LIKE '%b%' matches any name that contains the letters B or b
 
 Note: PostgreSQL also has the non-standard operator ILIKE that can perform a case-insensitive comparison - but avoid this to make code more portable.
 
+Exercise 3
+Which customers are from Norway?
+SELECT name FROM customers WHERE country ='Norway';
 
+Which rooms can accommodate more than two people?
+SELECT room_no FROM rooms WHERE no_guests > 2;
+
+Which invoices are dated after one month ago?
+SELECT * FROM invoices
+WHERE invoice_date >= CURRENT_DATE - INTERVAL '1 month';
+
+How would last month's invoices change if we gave a discount of 15%
+SELECT *, total*0.85 AS discounted  FROM invoices                                                          WHERE  invoice_date >= CURRENT_DATE - INTERVAL '1 month';
+ id | res_id | total  | invoice_date | paid | discounted 
+----+--------+--------+--------------+------+------------
+ 43 |     17 | 340.00 | 2023-04-15   | t    |   289.0000
+ 44 |     99 | 440.00 | 2023-04-15   | t    |   374.0000
+ 45 |     39 | 170.00 | 2023-04-16   | t    |   144.5000
+ 46 |     38 | 110.00 | 2023-04-16   | t    |    93.5000
+ 47 |     75 | 660.00 | 2023-04-16   | t    |   561.0000
+ 48 |     41 | 615.00 | 2023-04-19   | t    |   522.7500
+ 49 |    106 | 660.00 | 2023-04-20   | t    |   561.0000
+ 50 |      2 | 246.00 | 2023-04-22   | t    |   209.1000
+ 51 |     15 | 110.00 | 2023-04-22   | t    |    93.5000
+ 52 |     57 | 246.00 | 2023-04-25   | t    |   209.1000
+ 53 |     34 | 110.00 | 2023-04-26   | t    |    93.5000
+
+List all customers whose second name starts with 'M' (hint: there's a space before the second name)
+SELECT *
+FROM customers
+WHERE name LIKE '% M%';
