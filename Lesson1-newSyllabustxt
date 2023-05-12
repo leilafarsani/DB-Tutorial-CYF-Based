@@ -392,3 +392,31 @@ List all customers whose second name starts with 'M' (hint: there's a space befo
 SELECT *
 FROM customers
 WHERE name LIKE '% M%';
+
+Using SQL Functions
+You can use the built-in functions of SQL just as you can in JavaScript, but note that they are different (this is true of most programming languages) but there are also differences between SQL implementations.
+
+You use functions to change values, usually of columns, wherever you can use a column, for example, in the selected list of values:
+
+SELECT name, length(name) AS namelen, upper(email)
+  FROM customers;
+
+This query also uses a column alias (namelen) to provide a meaningful column heading.
+
+Functions are available that operate on all different datatypes.
+
+Country names are mixed case so to make sure we always match regardless of the stored case we can use the lower function to find all customers from Manchester, UK:
+
+SELECT * FROM customers
+   WHERE lower(country) = 'uk'
+     AND city = 'Manchester';
+
+Assuming room rates include VAT at 20%, list room rates after VAT increases to 23.5% (from 20%), but round to the nearest pound:
+
+SELECT room_no, room_type, rate AS old_rate,
+       round(rate * 100/120 * 123.5/100) AS new_rate
+   FROM rooms;
+
+For further information on SQL functions see the official PostgreSQL documentation at https://www.postgresql.org/docs/12/functions.html (for version 12 - for other versions change 12 to the required version)
+
+
