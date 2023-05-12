@@ -250,4 +250,115 @@ SELECT room_no, room_type, rate * 7 * 0.90 as weekly_rate from rooms;
 Use string concatenation to glue character data together:
 SELECT 'Customer name = ' || name FROM customers;
 
+Choosing the Rows
+You can choose which rows to display by specifying some condition that must be matched:
+SELECT id, name, phone, email, country
+  FROM customers
+  WHERE country = 'France';
+
+ id  |        name        |      phone       |            email            | country
+-----+--------------------+------------------+-----------------------------+---------
+ 9   | Laurence Lebihan   | 91.24.4555       | laurence.lebihan@xmzx.net   | France
+ 12  | Carine Schmitt     | 40.32.2555       | carine.schmitt@dftu.net     | France
+ 15  | Janine Labrune     | 40.67.8555       | janine.labrune@dlsh.net     | France
+ 25  | Mary Saveley       | 78.32.5555       | mary.saveley@yppl.net       | France
+ 34  | Martine Rancé      | 20.16.1555       | martine.rancé@xeqs.net      | France
+ 35  | Marie Bertrand     | (1) 42.34.2555   | marie.bertrand@glut.net     | France
+ 49  | Frédérique Citeaux | 88.60.1555       | frédérique.citeaux@vekn.net | France
+ 59  | Annette Roulet     | 61.77.6555       | annette.roulet@lgha.net     | France
+ 62  | Daniel Da Silva    | +33 1 46 62 7555 | daniel.da.silva@hijy.net    | France
+ 63  | Daniel Tonini      | 30.59.8555       | daniel.tonini@mxvw.net      | France
+ 91  | Laurence Lebihan   | 91.24.4555       | laurence.lebihan@xmzx.net   | France
+ 92  | Paul Henriot       | 26.47.1555       | paul.henriot@uwua.net       | France
+ 106 | Dominique Perrier  | (1) 47.55.6555   | dominique.perrier@bdim.net  | France
+(13 rows)
+
+You can use comparison operators =, <, >, <=, >=, != (or <>)
+
+Note: use only one = (equals) symbol to test for equality
+
+When comparing numbers no punctuation is needed around the value, for example, WHERE rate > 100.
+
+When comparing character data or dates you must enclose the values in single quotes (apostrophes), for example, WHERE name = 'Mary Saveley'.
+
+Only the rows that match the comparison test (called a predicate) are returned by the query. The predicate can use columns not returned by the query,
+
+Combining Tests in a Predicate
+Use AND and OR to combine tests:
+
+SELECT * FROM reservations
+   WHERE room_no >= 200
+     AND room_no < 300
+     AND checkin_date >= '2018-01-01';
+
+This lists reservations for rooms on the second floor (rooms 200 - 299) since the start of 2018. Note the format of the date value - this conforms to the ISO 8601 standard and should be used in preference to any other format to avoid ambiguity.
+
+Another example - to find cheap or Premier rooms on floors 1 and 2 - we might try this to start with:
+
+SELECT * FROM rooms
+   WHERE room_type = 'PREMIER'
+      OR rate < 100.00
+     AND room_no < 300;
+
+This isn't quite right - it returns rooms on the 3rd and 4th floors. Why?
+
+Overriding Evaluation Order
+Just like any programming language, SQL has an evaluation order (precedence). For example, multiply and divide take precedence over add and subtract, so that:
+
+SELECT rate + 20 * 0.85 from rooms;
+
+is not the same as:
+
+SELECT (rate + 20) * 0.85 from rooms;
+
+We can override the normal precedence by using parentheses (...) around parts of the expression, just as in JavaScript.
+
+With compound predicates AND takes precedence over OR, so that to make the query give the intended results we need to use:
+
+SELECT * FROM rooms
+   WHERE (room_type = 'PREMIER'
+      OR rate < 100.00)
+     AND room_no < 300;
+
+More Predicate Types
+The BETWEEN operator has the form a BETWEEN b AND c : checks that a is in the range b - c inclusive. For example:
+SELECT ... WHERE price BETWEEN 100 AND 250 ...
+
+Note that the AND in this case is not combining multiple predicates, it's part of the BETWEEN operator.
+
+The IN operator, a IN (b, c, d, ...) checks if the value of a is equal to any of b, c, d, etc... For example:
+SELECT ... WHERE room_no IN (201, 202, 204, 206) ...
+
+Both the BETWEEN and the IN operators can be inverted using:
+  ... a NOT BETWEEN b AND c ...
+
+  ... a NOT IN (b, c, d, ...)
+
+The LIKE operator tests for a match against a wildcard string as a LIKE b where a is being tested and b is the wildcard string. The wildcard string contains text to be matched along with wildcard symbols '%' and '_'.
+
+Note:
+A wildcard is a symbol used in computing and programming languages as a placeholder that represents one or more characters or values. In regular expressions, a wildcard character such as an asterisk (*) or question mark (?) can be used to match any sequence of characters or a single character, respectively. In file systems, a wildcard can be used to represent a set of characters in a file name or path, such as *.txt to represent all files with a .txt extension. Wildcards are often used to simplify searches, filtering, and pattern matching operations.
+
+% (percent) matches any number of any characters
+_ (underscore) matches exactly one of any character
+For example:
+
+name LIKE 'A%' matches names starting with 'A'
+
+name LIKE '_a%' matches names that have 'a' as the 2nd character (note the initial underscore '_')
+
+name LIKE '%ow%' matches names containing the sequence 'ow' anywhere in the name
+
+LIKE can be inverted using a NOT LIKE b
+
+If you need to match for a string that includes one of the wildard characters you can use the 'escape' character, which defaults to '\' (backslash). For example:
+
+str LIKE '% discount = 5\% %' matches any value in str that contains 'discount = 5%'
+
+LIKE is case sensitive in many SQL implementations so to make a case insensitive match you should either convert the tested value to either all upper or all lower case, for example:
+
+lower(name) LIKE '%b%' matches any name that contains the letters B or b
+
+Note: PostgreSQL also has the non-standard operator ILIKE that can perform a case-insensitive comparison - but avoid this to make code more portable.
+
 
