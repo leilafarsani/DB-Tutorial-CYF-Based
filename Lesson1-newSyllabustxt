@@ -373,7 +373,9 @@ SELECT * FROM invoices
 WHERE invoice_date >= CURRENT_DATE - INTERVAL '1 month';
 
 How would last month's invoices change if we gave a discount of 15%
-SELECT *, total*0.85 AS discounted  FROM invoices                                                          WHERE  invoice_date >= CURRENT_DATE - INTERVAL '1 month';
+SELECT *, total*0.85 AS discounted  
+FROM invoices                                        
+WHERE  invoice_date >= CURRENT_DATE - INTERVAL '1 month';
  id | res_id | total  | invoice_date | paid | discounted 
 ----+--------+--------+--------------+------+------------
  43 |     17 | 340.00 | 2023-04-15   | t    |   289.0000
@@ -389,7 +391,7 @@ SELECT *, total*0.85 AS discounted  FROM invoices                               
  53 |     34 | 110.00 | 2023-04-26   | t    |    93.5000
 
 List all customers whose second name starts with 'M' (hint: there's a space before the second name)
-SELECT *
+SELECT name
 FROM customers
 WHERE name LIKE '% M%';
 
@@ -439,5 +441,10 @@ Note: current_date is a postgres function that returns the current date.
 Also note that there are many ways to get the same result - you may explore those for yourself.
 
 You can also represent time intervals but the representations can be complicated and we shall not cover them here.
+
+Exercise 4
+Write a query to check that all booking dates are before their checkin dates
+We plan to offer a discount of 10% on all Premier and Premier Plus rooms next month. How much would we gain on each room if occupancy rose by 5 nights over the month.
+List all reservations for this month and the number of nights booked.
 
 
