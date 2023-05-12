@@ -419,4 +419,25 @@ SELECT room_no, room_type, rate AS old_rate,
 
 For further information on SQL functions see the official PostgreSQL documentation at https://www.postgresql.org/docs/12/functions.html (for version 12 - for other versions change 12 to the required version)
 
+Date and Time in SQL
+In SQL dates and times are held in an internal format but are represented externally (when entering values and displaying them) as strings;
+
+Text date format: 'YYYY-MM-DD' e.g. '2018-07-21' = 21 July 2018
+Time format: 'HH:mm:SS.ddd' e.g. '14:32'
+Date/Time format: 'YYYY-MM-DD HH:mm:SS.ddd' e.g. '2018-07-21 15:26:04'
+You can perform arithmetic on dates and times, for example:
+
+SELECT cust_id, room_no, checkin_date,
+       checkout_date - checkin_date AS nights
+   FROM reservations
+   WHERE checkout_date = current_date + 1;
+
+This query performs subtraction of one date from another (checkout_date - checkin_date) to calculate the number of nights the customer has stayed. It also performs addition (current_date + 1) to get tomorrow's date so that it lists all reservations that will be checking out tomorrow.
+
+Note: current_date is a postgres function that returns the current date.
+
+Also note that there are many ways to get the same result - you may explore those for yourself.
+
+You can also represent time intervals but the representations can be complicated and we shall not cover them here.
+
 
