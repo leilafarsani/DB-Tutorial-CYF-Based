@@ -444,7 +444,26 @@ You can also represent time intervals but the representations can be complicated
 
 Exercise 4
 Write a query to check that all booking dates are before their checkin dates
+SELECT * FROM reservations WHERE booking_date < checkin_date;
+
 We plan to offer a discount of 10% on all Premier and Premier Plus rooms next month. How much would we gain on each room if occupancy rose by 5 nights over the month.
+ SELECT room_no, room_type, rate * 5*0.9 AS income 
+ FROM rooms                                                        
+ WHERE room_type IN ('PREMIER','PREMIER PLUS');
+  room_type   | income  
+--------------+---------
+ PREMIER      | 495.000
+ PREMIER      | 495.000
+ PREMIER      | 495.000
+ PREMIER      | 495.000
+ PREMIER      | 495.000
+ PREMIER      | 495.000
+ PREMIER      | 495.000
+ PREMIER PLUS | 553.500
+ PREMIER PLUS | 553.500
+ PREMIER PLUS | 553.500
+ PREMIER PLUS | 553.500
+
 List all reservations for this month and the number of nights booked.
 
 
